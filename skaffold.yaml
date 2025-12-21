@@ -1,0 +1,37 @@
+apiVersion: skaffold/v4beta8
+kind: Config
+metadata:
+  name: social-feed-service
+build:
+  local:
+    push: false
+  tagPolicy:
+    sha256: {}
+  artifacts:
+    - image: social-feed-service
+      context: .
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  helm:
+    releases:
+      - name: social-feed-service
+        chartPath: helm
+        namespace: dev
+        createNamespace: true
+        valuesFiles:
+          - helm/values-dev.yaml
+        setValueTemplates:
+          image.repository: "{{.IMAGE_REPO_social_feed_service}}"
+          image.tag: "{{.IMAGE_TAG_social_feed_service}}"
+        wait: true
+portForward:
+  - resourceType: service
+    resourceName: social-feed-service-nodeport
+    namespace: dev
+    port: 8091
+    localPort: 8091
+profiles:
+  - name: minikube
+    activation:
+      - kubeContext: minikube
