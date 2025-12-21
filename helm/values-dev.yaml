@@ -7,8 +7,8 @@ image:
 
 service:
   clusterIP:
-    port: 8090
+    port: 8091
 
   nodePort:
-    port: 8090
-    nodePort: 30090
+    port: 8091
+    nodePort: 30091
