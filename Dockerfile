@@ -1,8 +1,19 @@
+# Build Stage
+FROM maven:3.9-eclipse-temurin-17 AS build
+WORKDIR /workspace
+
+COPY pom.xml .
+RUN mvn -q -DskipTests dependency:go-offline
+
+COPY src ./src
+RUN mvn -q -DskipTests clean package
+
+# Run Stage
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 
 # Copy JAR
-COPY target/social-feed-service-0.1.0.jar ./social-feed-service.jar
+COPY --from=build /workspace/target/social-feed-service-0.1.0.jar ./social-feed-service.jar
 
 # Copy configuration
 COPY src/main/resources/config.yaml ./config.yaml
