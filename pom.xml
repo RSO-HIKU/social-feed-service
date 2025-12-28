@@ -94,13 +94,25 @@
                     </execution>
                 </executions>
             </plugin>
+                        <!-- Exec plugin for SchemaGenerator -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
-                <configuration>
-                    <mainClass>com.hiku.socialFeedService.util.SchemaGenerator</mainClass>
-                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-schema</id>
+                        <!-- Run after compilation -->
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>com.hiku.socialFeedService.util.SchemaGenerator</mainClass>
+                            <skip>${skipExec}</skip>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
