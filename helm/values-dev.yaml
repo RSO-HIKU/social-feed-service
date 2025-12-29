@@ -12,3 +12,8 @@ service:
   nodePort:
     port: 8091
     nodePort: 30091
+
+flyway:
+  image:
+    repository: social-feed-service-migrator
+    tag: "dev"
