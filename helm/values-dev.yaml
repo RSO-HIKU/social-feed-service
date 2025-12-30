@@ -22,3 +22,9 @@ flyway:
   password: hikupassword
   baselineOnMigrate: true
   baselineVersion: 1
+
+rabbitmq:
+  host: rabbitmq.platform.svc.cluster.local
+  port: 5672
+  user: hikuuser
+  password: hikupassword

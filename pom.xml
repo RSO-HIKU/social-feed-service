@@ -74,7 +74,11 @@
             <artifactId>amqp-client</artifactId>
             <version>5.18.0</version> <!-- compatible with older Java -->
         </dependency>
-
+      <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240303</version>
+        </dependency>
     </dependencies>
 
     <build>
