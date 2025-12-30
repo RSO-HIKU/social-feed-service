@@ -1,11 +1,14 @@
 package com.hiku.socialFeedService.messaging;
 
+import com.hiku.socialFeedService.repository.FeedRepository;
+
 import com.rabbitmq.client.*;
 import org.json.JSONObject;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class FollowEventConsumer {
+  private static final FeedRepository followRepository = new FeedRepository();
 
     public static void start() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
@@ -30,9 +33,15 @@ public class FollowEventConsumer {
 
             // TODO: Update your follow data in the database accordingly
             if ("CREATED".equals(action)) {
+                
+                followRepository.addFollow(followerId, followedId);
+                System.out.println("Added follow: " + followerId + " -> " + followedId);
+          
                 // Add follow relationship in your DB
             } else if ("REMOVED".equals(action)) {
-                // Remove follow relationship in your DB
+               followRepository.removeFollow(followerId, followedId);
+                System.out.println("Removed follow: " + followerId + " -> " + followedId);
+          
             }
             System.out.println("Processed follow event: " + message);
         };
