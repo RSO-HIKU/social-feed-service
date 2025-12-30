@@ -69,6 +69,12 @@
             <artifactId>postgresql</artifactId>
             <version>42.6.0</version> <!-- or the latest stable version -->
         </dependency>
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>5.18.0</version> <!-- compatible with older Java -->
+        </dependency>
+
     </dependencies>
 
     <build>

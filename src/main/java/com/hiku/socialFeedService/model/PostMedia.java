@@ -3,7 +3,7 @@ package com.hiku.socialFeedService.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "post_media")
+@Table(name = "post_media",schema = "social_feed_service")
 public class PostMedia {
 
     @Id
