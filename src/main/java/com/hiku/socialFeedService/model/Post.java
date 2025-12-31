@@ -21,8 +21,8 @@ public class Post {
     @Column(length = 2000)
     private String content;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<PostMedia> media; // images/videos
+    // @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    // private List<PostMedia> media; // images/videos
 
     private LocalDateTime createdAt;
 
@@ -59,12 +59,12 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
-    public List<PostMedia> getMedia() {
-        return media;
-    }
-    public void setMedia(List<PostMedia> media) {
-        this.media = media;
-    }
+    // public List<PostMedia> getMedia() {
+    //     return media;
+    // }
+    // public void setMedia(List<PostMedia> media) {
+    //     this.media = media;
+    // }
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }

@@ -66,4 +66,74 @@ public class FeedRepository {
         }
     }
 
+
+
+    public List<Post> findPostsFromFollowed(Long followerId) {
+        EntityManager em = getEntityManager();
+        try {
+            // Get all followingIds for this follower
+            List<Long> followingIds = em.createQuery(
+                "SELECT f.followingId FROM Follow f WHERE f.followerId = :followerId", Long.class)
+                .setParameter("followerId", followerId)
+                .getResultList();
+
+            if (followingIds.isEmpty()) {
+                return List.of();
+            }
+
+            // Get all posts from those users (userId in Post)
+            return em.createQuery(
+                "SELECT p FROM Post p WHERE p.userId IN :followingIds ORDER BY p.createdAt DESC", Post.class)
+                .setParameter("followingIds", followingIds)
+                .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Post> findPostsByUserId(Long userId) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery(
+                "SELECT p FROM Post p WHERE p.userId = :userId ORDER BY p.createdAt DESC", Post.class)
+                .setParameter("userId", userId)
+                .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public Post createPost(Post post) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(post);
+            em.getTransaction().commit();
+            return post;
+        } finally {
+            em.close();
+        }
+    }
+
+    public boolean deletePost(Long postId) {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Post post = em.find(Post.class, postId);
+            if (post != null) {
+                em.remove(post);
+                em.getTransaction().commit();
+                return true;
+            }
+            em.getTransaction().rollback();
+            return false;
+        } finally {
+            em.close();
+        }
+    }
+
+
+
+
+
 }
