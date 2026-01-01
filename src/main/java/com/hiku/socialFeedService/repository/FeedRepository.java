@@ -104,11 +104,13 @@ public class FeedRepository {
     }
 
     public Post createPost(Post post) {
+        System.out.println("Creating post: " + post.getTitle() + " by userId: " + post.getUserId());
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
             em.persist(post);
             em.getTransaction().commit();
+            System.out.println("Created post with ID: " + post.getId());
             return post;
         } finally {
             em.close();

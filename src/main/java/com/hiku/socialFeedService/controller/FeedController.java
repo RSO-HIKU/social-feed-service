@@ -2,6 +2,7 @@ package com.hiku.socialFeedService.controller;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.hiku.socialFeedService.model.Post;
 import com.hiku.socialFeedService.repository.FeedRepository;
@@ -28,12 +29,22 @@ public class FeedController {
         return repo.findPostsFromFollowed(followerId);
     }
 
+@OPTIONS
+@Path("{any: .*}")
+public Response options() {
+    return Response.ok().build();
+}
 
-
-    @POST
-    public Post createPost(Post post) {
+@POST
+@Path("/post")
+public Post createPostAtPostPath(Post post) {
+    try {
         return repo.createPost(post);
+    } catch (Exception e) {
+        e.printStackTrace();
+        throw new InternalServerErrorException("Failed to create post");
     }
+}
 
     @GET
     @Path("/postFrom/{userId}")
