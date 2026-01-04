@@ -15,7 +15,6 @@ public class FeedRepository {
     private final EntityManagerFactory emf;
 
     public FeedRepository() {
-        // Create EntityManagerFactory for RESOURCE_LOCAL unit
         this.emf = Persistence.createEntityManagerFactory("hikuPU");
     }
 
@@ -25,15 +24,17 @@ public class FeedRepository {
 
     public List<Post> findAll() {
         EntityManager em = getEntityManager();
-        List<Post> result = em.createQuery("SELECT p FROM Post p", Post.class).getResultList();
-        em.close();
-        return result;
+        try {
+            return em.createQuery("SELECT p FROM Post p", Post.class).getResultList();
+        } finally {
+            em.close();
+        }
     }
- public void addFollow(Long followerId, Long followingId) {
+
+    public void addFollow(Long followerId, Long followingId) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
-            // Check if already exists (due to unique constraint)
             Long count = em.createQuery(
                 "SELECT COUNT(f) FROM Follow f WHERE f.followerId = :followerId AND f.followingId = :followingId", Long.class)
                 .setParameter("followerId", followerId)
@@ -46,6 +47,9 @@ public class FeedRepository {
                 em.persist(follow);
             }
             em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
         } finally {
             em.close();
         }
@@ -61,17 +65,17 @@ public class FeedRepository {
                 .setParameter("followingId", followingId)
                 .executeUpdate();
             em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
         } finally {
             em.close();
         }
     }
 
-
-
     public List<Post> findPostsFromFollowed(Long followerId) {
         EntityManager em = getEntityManager();
         try {
-            // Get all followingIds for this follower
             List<Long> followingIds = em.createQuery(
                 "SELECT f.followingId FROM Follow f WHERE f.followerId = :followerId", Long.class)
                 .setParameter("followerId", followerId)
@@ -81,7 +85,6 @@ public class FeedRepository {
                 return List.of();
             }
 
-            // Get all posts from those users (userId in Post)
             return em.createQuery(
                 "SELECT p FROM Post p WHERE p.userId IN :followingIds ORDER BY p.createdAt DESC", Post.class)
                 .setParameter("followingIds", followingIds)
@@ -112,6 +115,9 @@ public class FeedRepository {
             em.getTransaction().commit();
             System.out.println("Created post with ID: " + post.getId());
             return post;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
         } finally {
             em.close();
         }
@@ -129,13 +135,11 @@ public class FeedRepository {
             }
             em.getTransaction().rollback();
             return false;
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            throw e;
         } finally {
             em.close();
         }
     }
-
-
-
-
-
 }

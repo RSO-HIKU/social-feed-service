@@ -20,6 +20,14 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
 
 
+            <!-- Connection Pool Configuration (C3P0) -->
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="300"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.c3p0.idle_test_period" value="300"/>
+            
+
             <!-- Generate SQL script without touching DB comment out while deploying to real DB 
             <property name="javax.persistence.schema-generation.database.action" value="none"/>
             <property name="javax.persistence.schema-generation.scripts.action" value="create"/>

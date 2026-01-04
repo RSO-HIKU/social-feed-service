@@ -32,7 +32,7 @@ flyway:
   user: hikuuser
   password: hikupassword
   baselineOnMigrate: true
-  baselineVersion: 1
+  baselineVersion: 2
 
 rabbitmq:
   host: rabbitmq.platform.svc.cluster.local
