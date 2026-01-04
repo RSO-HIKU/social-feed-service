@@ -107,7 +107,7 @@ public class FeedRepository {
     }
 
     public Post createPost(Post post) {
-        System.out.println("Creating post: " + post.getTitle() + " by userId: " + post.getUserId());
+        System.out.println("Creating post: " + post.getTitle() + " by userId: " + post.getUserId()+" with image URL: " + post.getPostimageurl());
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();

@@ -79,10 +79,10 @@ public class Post {
     public void setAutomated(boolean automated) {
         this.automated = automated;
     }
-    public String getPostImageUrl(){
+    public String getPostimageurl(){
         return postImageUrl;
     }
-    public void setpostImageUrl(String url){
+    public void setPostimageurl(String url){
         this.postImageUrl= url;
     }
 
