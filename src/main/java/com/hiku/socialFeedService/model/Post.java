@@ -17,6 +17,8 @@ public class Post {
     private String username;
 
     private String title;
+    
+    private String postImageUrl;
 
     @Column(length = 2000)
     private String content;
@@ -76,6 +78,12 @@ public class Post {
     }
     public void setAutomated(boolean automated) {
         this.automated = automated;
+    }
+    public String getPostImageUrl(){
+        return postImageUrl;
+    }
+    public void setpostImageUrl(String url){
+        this.postImageUrl= url;
     }
 
 }
