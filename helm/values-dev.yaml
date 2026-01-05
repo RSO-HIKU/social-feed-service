@@ -18,6 +18,7 @@ azure:
 service:
   clusterIP:
     port: 8091
+    address: "0.0.0.0"
 
   nodePort:
     enabled: true
