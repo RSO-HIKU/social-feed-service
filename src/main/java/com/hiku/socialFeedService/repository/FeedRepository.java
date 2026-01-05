@@ -31,7 +31,7 @@ public class FeedRepository {
         }
     }
 
-    public void addFollow(Long followerId, Long followingId) {
+    public void addFollow(String followerId, String followingId) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -55,7 +55,7 @@ public class FeedRepository {
         }
     }
 
-    public void removeFollow(Long followerId, Long followingId) {
+    public void removeFollow(String followerId, String followingId) {
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -73,11 +73,11 @@ public class FeedRepository {
         }
     }
 
-    public List<Post> findPostsFromFollowed(Long followerId) {
+    public List<Post> findPostsFromFollowed(String followerId) {
         EntityManager em = getEntityManager();
         try {
-            List<Long> followingIds = em.createQuery(
-                "SELECT f.followingId FROM Follow f WHERE f.followerId = :followerId", Long.class)
+            List<String> followingIds = em.createQuery(
+                "SELECT f.followingId FROM Follow f WHERE f.followerId = :followerId", String.class)
                 .setParameter("followerId", followerId)
                 .getResultList();
 
@@ -94,7 +94,7 @@ public class FeedRepository {
         }
     }
 
-    public List<Post> findPostsByUserId(Long userId) {
+    public List<Post> findPostsByUserId(String userId) {
         EntityManager em = getEntityManager();
         try {
             return em.createQuery(

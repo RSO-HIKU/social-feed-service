@@ -14,10 +14,10 @@ public class Follow {
     private Long id;
 
     @Column(name = "follower_id", nullable = false)
-    private Long followerId; // corrected naming
+    private String followerId;
 
     @Column(name = "following_id", nullable = false)
-    private Long followingId; // corrected naming
+    private String followingId;
 
     @Column(nullable = false)
     private OffsetDateTime createdAt;
@@ -38,19 +38,19 @@ public class Follow {
         this.id = id;
     }
 
-    public Long getFollowerId() {
+    public String getFollowerId() {
         return followerId;
     }
 
-    public void setFollowerId(Long followerId) {
+    public void setFollowerId(String followerId) {
         this.followerId = followerId;
     }
 
-    public Long getFollowingId() {
+    public String getFollowingId() {
         return followingId;
     }
 
-    public void setFollowingId(Long followingId) {
+    public void setFollowingId(String followingId) {
         this.followingId = followingId;
     }
 

@@ -27,8 +27,8 @@ public class FollowEventConsumer {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
             JSONObject event = new JSONObject(message);
-            Long followerId = event.getLong("followerId");
-            Long followedId = event.getLong("followedId");
+            String followerId = event.getString("followerId");
+            String followedId = event.getString("followedId");
             String action = event.getString("action");
 
             // TODO: Update your follow data in the database accordingly

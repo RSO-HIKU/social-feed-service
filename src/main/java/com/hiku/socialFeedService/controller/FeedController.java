@@ -25,7 +25,7 @@ public class FeedController {
 
     @GET
     @Path("/followingPosts/{followerId}")
-    public List<Post> getFeed(@PathParam("followerId") Long followerId) {
+    public List<Post> getFeed(@PathParam("followerId") String followerId) {
         return repo.findPostsFromFollowed(followerId);
     }
 
@@ -48,7 +48,7 @@ public Post createPostAtPostPath(Post post) {
 
     @GET
     @Path("/postFrom/{userId}")
-    public List<Post> getUserPosts(@PathParam("userId") Long userId) {
+    public List<Post> getUserPosts(@PathParam("userId") String userId) {
         return repo.findPostsByUserId(userId);
     }
     @DELETE

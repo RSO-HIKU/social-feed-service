@@ -13,7 +13,7 @@ public class Post {
 
     // Reference to user from User Service
     @Column(nullable = false)
-    private Long userId;
+    private String userId;
     private String username;
 
     private String title;
@@ -37,10 +37,10 @@ public class Post {
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
     public String getUsername() {
