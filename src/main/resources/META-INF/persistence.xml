@@ -7,6 +7,7 @@
     <persistence-unit name="hikuPU" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <non-jta-data-source>jdbc/HikuDS</non-jta-data-source>
 
         <properties>
             <!-- JDBC configuration -->
