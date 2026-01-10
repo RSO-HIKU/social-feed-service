@@ -10,28 +10,7 @@
         <non-jta-data-source>jdbc/HikuDS</non-jta-data-source>
 
         <properties>
-            <!-- JDBC configuration -->
-            <!-- Comment below out and run mvn clean compile to generate locally .sql -->
-            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
-            <!-- Comment above out and run mvn clean compile to generate locally .sql -->
-            <!-- Hibernate dialect -->
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
-
-
-            <!-- Connection Pool Configuration (C3P0) -->
-            <property name="hibernate.c3p0.min_size" value="5"/>
-            <property name="hibernate.c3p0.max_size" value="20"/>
-            <property name="hibernate.c3p0.timeout" value="300"/>
-            <property name="hibernate.c3p0.max_statements" value="50"/>
-            <property name="hibernate.c3p0.idle_test_period" value="300"/>
-            
-
-            <!-- Generate SQL script without touching DB comment out while deploying to real DB 
-            <property name="javax.persistence.schema-generation.database.action" value="none"/>
-            <property name="javax.persistence.schema-generation.scripts.action" value="create"/>
-            <property name="javax.persistence.schema-generation.scripts.create-target" value="target/schema-social-feed.sql"/>
-            <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
-           --> <!-- Optional: format the SQL nicely -->
             <property name="hibernate.format_sql" value="true"/>
         </properties>
     </persistence-unit>
