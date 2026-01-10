@@ -14,8 +14,8 @@ public class FollowEventConsumer {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost(System.getenv().getOrDefault("RABBITMQ_HOST", "rabbitmq.platform.svc.cluster.local"));
         factory.setPort(Integer.parseInt(System.getenv().getOrDefault("RABBITMQ_PORT", "5672")));
-        factory.setUsername(System.getenv().getOrDefault("RABBITMQ_USER", "hikuuser"));
-        factory.setPassword(System.getenv().getOrDefault("RABBITMQ_PASSWORD", "hikupassword"));
+        factory.setUsername(System.getenv().getOrDefault("RABBITMQ_DEFAULT_USER", "hikuuser"));
+        factory.setPassword(System.getenv().getOrDefault("RABBITMQ_DEFAULT_PASS", "hikupassword"));
 
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
