@@ -126,7 +126,7 @@ Rules when working with migrations:
 Migrations run automatically via Kubernetes Job (see `helm/templates/migrate-job.yaml`).
 
 ## API Endpoints
- Described in doc/Social Feed Service.postman_collection.json file.
+ Described in docs/Social Feed Service.postman_collection.json file.
 
 ## Authentication & Authorization
 
