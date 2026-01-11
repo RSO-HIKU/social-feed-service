@@ -1,5 +1,6 @@
 package com.hiku.socialFeedService.controller;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -9,6 +10,7 @@ import com.hiku.socialFeedService.repository.FeedRepository;
 
 import java.util.List;
 @Path("/feed")
+@RolesAllowed("user")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class FeedController {

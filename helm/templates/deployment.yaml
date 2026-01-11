@@ -50,11 +50,15 @@ spec:
               export KUMULUZEE_DATASOURCES_DEFAULT_PASSWORD=$(cat /mnt/secrets-store/social-feed-db-password)
               export DB_HOST=$(cat /mnt/secrets-store/pg-host)
               export KUMULUZEE_DATASOURCES_DEFAULT_CONNECTIONURL="jdbc:postgresql://${DB_HOST}:{{ .Values.azure.port }}/{{ .Values.azure.database }}?sslmode={{ .Values.azure.sslmode }}&currentSchema={{ .Values.database.schema }},public"
-              export KUMULUZEE_DATASOURCES_DEFAULT_POOL_MAX_SIZE="{{ .Values.dbPool.poolMaxSize }}"
               
               # JWT Auth (Keycloak / OIDC)
               export KUMULUZEE_JWT_AUTH_ISSUER="{{ .Values.jwtAuth.issuer }}"
               export KUMULUZEE_JWT_AUTH_JWKS_URI="{{ .Values.jwtAuth.jwksUri }}"
+
+              export RABBITMQ_DEFAULT_USER=$(cat /mnt/secrets-store/rabbitmq-default-user)
+              export RABBITMQ_DEFAULT_PASS=$(cat /mnt/secrets-store/rabbitmq-default-pass)
+              export RABBITMQ_HOST="{{ .Values.rabbitmq.host }}"
+              export RABBITMQ_PORT="{{ .Values.rabbitmq.port }}"
 
               # Run the Java application
               exec java -jar /app/social-feed-service.jar
