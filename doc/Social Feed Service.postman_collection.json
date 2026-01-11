@@ -1,0 +1,942 @@
+{
+	"info": {
+		"_postman_id": "9bb46aa1-ffa5-4f3a-9cc3-cd8329846e08",
+		"name": "Social Feed Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50625471",
+		"_collection_link": "https://hiku99.postman.co/workspace/HIKU~a6a05134-9dee-4d54-81a0-4bc7685fcc34/collection/50625471-9bb46aa1-ffa5-4f3a-9cc3-cd8329846e08?action=share&source=collection_link&creator=50625471"
+	},
+	"item": [
+		{
+			"name": "Get all posts",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/feed",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"feed"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all posts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bio\": \"Hiking enthusiast update\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1207"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:16:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"automated\": false,\n        \"content\": \"I completed hike to triglav.\",\n        \"createdAt\": \"2026-01-10T14:42:16\",\n        \"id\": 2,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/8b100a6e-4ff6-4568-8165-2dc9e5c76951.jpg\",\n        \"title\": \"Great hike\",\n        \"userId\": \"842a4091-bf27-486b-a255-87b4211d4e5e\",\n        \"username\": \"nika\"\n    },\n    {\n        \"automated\": false,\n        \"content\": \"Saw a nice sunset.\",\n        \"createdAt\": \"2026-01-10T14:44:12\",\n        \"id\": 3,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/b6935250-763a-4032-95b0-c326af430dc0.jpg\",\n        \"title\": \"First post\",\n        \"userId\": \"bd927d2a-4af6-4602-ab74-cca8e106f1f7\",\n        \"username\": \"nina\"\n    },\n    {\n        \"automated\": false,\n        \"content\": \"2\",\n        \"createdAt\": \"2026-01-10T22:21:32\",\n        \"id\": 5,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/4bfda7a8-4518-412e-9336-c806cc4a5848.jpg\",\n        \"title\": \"Test2\",\n        \"userId\": \"8e93bfd1-3a0b-479a-a041-071b92be00ec\",\n        \"username\": \"ak47\"\n    },\n    {\n        \"automated\": false,\n        \"content\": \"Super\",\n        \"createdAt\": \"2026-01-10T22:22:21\",\n        \"id\": 6,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/bb1610d6-11ba-474d-ad05-795272264499.jpg\",\n        \"title\": \"Bled\",\n        \"userId\": \"5be32422-b299-42b8-9b35-01bc563e95e2\",\n        \"username\": \"stani\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get personalized feed showing posts from users that the follower is following",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/feed/followingPosts/{{userId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"feed",
+						"followingPosts",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get personalized feed showing posts from users that the follower is following",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bio\": \"Hiking enthusiast update\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/followingPosts/{{followUserId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"followingPosts",
+								"{{followUserId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "292"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:18:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"automated\": false,\n        \"content\": \"Super\",\n        \"createdAt\": \"2026-01-10T22:22:21\",\n        \"id\": 6,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/bb1610d6-11ba-474d-ad05-795272264499.jpg\",\n        \"title\": \"Bled\",\n        \"userId\": \"5be32422-b299-42b8-9b35-01bc563e95e2\",\n        \"username\": \"stani\"\n    }\n]"
+				},
+				{
+					"name": "Get personalized feed showing posts from users that the follower is following",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"bio\": \"Hiking enthusiast update\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/followingPosts/{{userId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"followingPosts",
+								"{{userId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "597"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:31:06 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"automated\": false,\n        \"content\": \"2\",\n        \"createdAt\": \"2026-01-10T22:21:32\",\n        \"id\": 5,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/4bfda7a8-4518-412e-9336-c806cc4a5848.jpg\",\n        \"title\": \"Test2\",\n        \"userId\": \"8e93bfd1-3a0b-479a-a041-071b92be00ec\",\n        \"username\": \"ak47\"\n    },\n    {\n        \"automated\": false,\n        \"content\": \"Saw a nice sunset.\",\n        \"createdAt\": \"2026-01-10T14:44:12\",\n        \"id\": 3,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/b6935250-763a-4032-95b0-c326af430dc0.jpg\",\n        \"title\": \"First post\",\n        \"userId\": \"bd927d2a-4af6-4602-ab74-cca8e106f1f7\",\n        \"username\": \"nina\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Create a new post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"uuid-string\",\r\n  \"username\": \"johndoe\",\r\n  \"title\": \"My Hiking Adventure\",\r\n  \"content\": \"Today I hiked 15km through beautiful mountains...\",\r\n  \"postImageUrl\": \"https://example.com/my-photo.jpg\",\r\n  \"automated\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/feed/feed/post",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"feed",
+						"post"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create a new post",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"uuid-string\",\r\n  \"username\": \"johndoe\",\r\n  \"title\": \"My Hiking Adventure\",\r\n  \"content\": \"Today I hiked 15km through beautiful mountains...\",\r\n  \"postImageUrl\": \"https://example.com/my-photo.jpg\",\r\n  \"automated\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"post"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:19:56 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"automated\": false,\n    \"content\": \"Today I hiked 15km through beautiful mountains...\",\n    \"id\": 7,\n    \"title\": \"My Hiking Adventure\",\n    \"userId\": \"uuid-string\",\n    \"username\": \"johndoe\"\n}"
+				},
+				{
+					"name": "Create a new post",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"uuid-string\",\r\n  \"username\": \"johndoe\",\r\n  \"title\": \"My Hiking Adventure\",\r\n  \"content\": \"Today I hiked 15km through beautiful mountains...\",\r\n  \"postImageUrl\": \"https://example.com/my-photo.jpg\",\r\n  \"automated\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/post",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"post"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "162"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:26:18 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"automated\": false,\n    \"content\": \"Today I hiked 15km through beautiful mountains...\",\n    \"id\": 8,\n    \"title\": \"My Hiking Adventure\",\n    \"userId\": \"uuid-string\",\n    \"username\": \"johndoe\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all posts created by a specific user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/feed/postFrom/{{userId}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"feed",
+						"postFrom",
+						"{{userId}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all posts created by a specific user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/postFrom/{{userId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"postFrom",
+								"{{userId}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "310"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:21:23 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"automated\": false,\n        \"content\": \"Saw a nice sunset.\",\n        \"createdAt\": \"2026-01-10T14:44:12\",\n        \"id\": 3,\n        \"postimageurl\": \"https://stblobhikutestplcbf6c2f.blob.core.windows.net/images/2026-01-10/b6935250-763a-4032-95b0-c326af430dc0.jpg\",\n        \"title\": \"First post\",\n        \"userId\": \"bd927d2a-4af6-4602-ab74-cca8e106f1f7\",\n        \"username\": \"nina\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Delete a post by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/feed/post/9",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"feed",
+						"post",
+						"9"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete a post by ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/post/7",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"post",
+								"7"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:27:13 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Delete a post by ID",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/feed/feed/post/8",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"feed",
+								"post",
+								"8"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:27:43 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/health",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"health"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health check",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/feed/health",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"health"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "252"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:29:50 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"UP\",\n    \"service\": \"social-feed-service\",\n    \"timestamp\": \"2026-01-11T14:29:50.439685370Z\",\n    \"checks\": [\n        {\n            \"name\": \"database\",\n            \"status\": \"UP\",\n            \"message\": \"Database connection OK\"\n        },\n        {\n            \"name\": \"memory\",\n            \"status\": \"UP\",\n            \"message\": \"Heap usage: 8.0% (159 MB / 1986 MB)\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "health Liveness probe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/health/live",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"health",
+						"live"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health Liveness probe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/feed/health/live",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"health",
+								"live"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "112"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:32:17 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"UP\",\n    \"service\": \"social-feed-service\",\n    \"timestamp\": \"2026-01-11T14:32:17.682292055Z\",\n    \"uptime_ms\": 2310614\n}"
+				}
+			]
+		},
+		{
+			"name": "health Readiness probe",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/feed/health/ready",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"feed",
+						"health",
+						"ready"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "health Readiness probe",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/feed/health/ready",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"feed",
+								"health",
+								"ready"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, content-type, accept, authorization"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, PATCH, PUT, DELETE, OPTIONS, HEAD"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "http://localhost:8081"
+						},
+						{
+							"key": "Content-Length",
+							"value": "154"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jan 2026 14:33:04 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(10.0.9)"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "KumuluzEE/4.1.0"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"UP\",\n    \"service\": \"social-feed-service\",\n    \"timestamp\": \"2026-01-11T14:33:04.710857389Z\",\n    \"database\": {\n        \"status\": \"UP\",\n        \"message\": \"Database connection OK\"\n    }\n}"
+				}
+			]
+		}
+	]
+}
